@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hej verden</h1>
+    <div id="content"></div>
+
+    <script>
+        
+        fetch('http://localhost:3000/api/test')
+        .then((response) => {
+            console.log(response);
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json);
+
+            let content = document.getElementById("content");
+            let p = document.createElement("p");
+
+            p.textContent = json.text;
+            content.appendChild(p);
+        })
+
+        fetch('http://localhost:3000/api/profil')
+        .then((response) => {
+            console.log(response);
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json);
+            
+            let content = document.getElementById("content");
+            let li = document.createElement("li");
+            let li2 = document.createElement("li");
+            let li3 = document.createElement("li");
+            let li4 = document.createElement("li");
+            
+            li.textContent = json.fornavn;
+            content.appendChild(li);
+            li2.textContent = json.efternavn;
+            content.appendChild(li2);
+            li3.textContent = json.by;
+            content.appendChild(li3);
+            li4.textContent = json.alder;
+            content.appendChild(li4);
+        })
+
+    </script>
+</body>
+</html>
