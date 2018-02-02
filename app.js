@@ -18,6 +18,33 @@ app.get('/api/profil', (req, res) => {
     );
  });
 
+ app.get('/api/byer', (req, res) => {
+    res.json(
+        { 
+            byer: [
+                {by: "Hillerød"},
+                {by: "Allerød"},
+                {by: "Lynge"},
+                {by: "Ballerup"},
+                {by: "Århus"}                
+            ]
+        }
+    );
+ });
+
+ app.get('/api/numre', (req, res) => {
+    res.json(
+        { 
+            numre: [
+                {num: "38"},
+                {num: "83"},
+                {num: "3"},
+                {num: "8"}                
+            ]
+        }
+    );
+ });
+
 app.use(express.static('public'));
 
 app.listen(3000, (err) => {
