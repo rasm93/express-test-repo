@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="content"></div>
+        <a href="index.html">Forside</a>
+        <a href="byer.html">Byer</a>
+        <a href="numre.html">Numre</a>
+
+        <script>
+            
+            fetch('http://localhost:3000/api/numre')
+            .then((response) => {
+                console.log(response);
+                return response.json();
+            })
+            .then((json) => {
+                console.log(json);
+                let content = document.getElementById("content");
+
+                for (i = 0; i < json.numre.length; i++){
+                    let li = document.createElement("li");
+
+                    li.textContent = "Nummer: " + json.numre[i].num;
+                    content.appendChild(li);
+                }
+            })
+
+        </script>
+</body>
+</html>
